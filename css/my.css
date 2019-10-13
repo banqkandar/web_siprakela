@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    color: #322F56  ;
+}
+
+.logo{
+    margin-top: 60px;
+}
+
+.judul-login{
+    font-family: 'Merriweather', serif;
+}
+
+p.subjudul {
+    color: #CED0CE;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button.btn-login {
+    width: 100%;
+    align-content: center;
+    color: #fff;
+    background-color: #F14F20;
+}
+
+button.btn-login:hover {
+    background-color: rgb(245, 64, 14);
+    color: #fff;
+}
+
+.tiny{
+    color: rgb(245, 64, 14);
+}
+
+hr.bullet {
+    position: relative;
+    border-color: #EFEFEF;
+    margin: 30px 0;
+}
+
+hr.bullet:before {
+    position: absolute;
+    content: "";
+    background-color: #EFEFEF;
+    border: 2px solid #fff;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    top: 0;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
+}
+
+a.btn-regis {
+    border: 1px solid #EFEFEF; 
+    color: #CED0CE;
+}
+
+a.btn-regis:hover {
+    background-color: #EFEFEF;
+    color: rgb(87, 86, 95);
+}
+
+a.kembali {
+    font-size: 18px;
+    font-weight: 200;
+    color: #322F56;
+    text-decoration: none;
+}
+
+a.kembali:hover {
+    font-size: 18px;
+    font-weight: 200;
+    color: #322F56;
+    text-decoration: none;
+}
+
+/* ________________________________________________________ */
+
+.jumbotron.jumbotron-fluid {
+    background-color: #FFC54F;
+}
+
+nav.shift ul li a {
+    position: relative;
+    z-index: 1;
+    padding: none;
+}
+
+nav.shift ul li a:hover {
+    color: #191919;
+}
+
+nav.shift ul li a:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    content: '';
+    color: #F14F20;
+    background: #F14F20;
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+}
+
+nav.shift ul li a:hover:after {
+    opacity: 1;
+    margin: auto;
+    align-items: center;
+    margin-left: 2,5px;
+    height: 5%;
+}
+
+.navbar-light .navbar-nav .nav-item.active .nav-link {
+    color: #191919;
+    width: 80px;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'Montserrat';
+    margin-left: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #191919 !important;
+}
+
+.judul{
+    color: #191919;
+    font-weight: bold;
+    font-size: 32px;
+    line-height:1.3em;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif;
+}
+
+p.sub, label {
+    color: rgb(68, 68, 68);
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a.btn-minat {
+    color: #191919;
+    width: 140px;
+    height: 45px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #F14F20;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 8px 15px rgb(255, 146, 115, 0.7);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+a.btn-minat:hover {
+    background-color: rgb(243, 67, 19);
+    color: #191919;
+}
+
+.btn.btn-minat {
+    color: #191919;
+    width: 140px;
+    height: 45px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #F14F20;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    border: none;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 8px 15px rgb(255, 146, 115, 0.7);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn.btn-minat:hover {
+    background-color: rgb(243, 67, 19);
+    color: #191919;
+}
+
+/* ----------------------------------------------- */
+
