@@ -41,18 +41,22 @@
                       <tbody>
                         <?php
                         $no = 1;
-                        $tampil = $con->query("SELECT * FROM pengajuan join jenis_penelitian using(id_penelitian) join bagian using(id_bagian) ");
+                        $tampil = $con->query("SELECT * FROM pengajuan join jenis_penelitian using(id_penelitian) join bagian using(id_bagian) ORDER BY id_pengajuan DESC ");
                         while ($isi = mysqli_fetch_assoc($tampil)) {
 
                           ?>
                         <tr>
-                          <td> <?= $no++; ?></td>
-                          <td> <?= $isi["email"]; ?></td>
+                          <td><?= $no++; ?>.</td>
+                          <td><?= $isi["email"]; ?></td>
                           <td><?= $isi["kampus"]; ?> </td>
                           <td><?= $isi["nama_penelitian"]; ?> </td>
                           <td><?= $isi["nama_bagian"]; ?> </td>
-                          <td><?= $isi["tanggal"]; ?> </td>
-                          <?php
+                          <td>
+                            <?php
+                            $date = date_create($isi["tanggal"]);
+                            echo date_format($date, "d F, H:i");
+                          ?>
+                            <?php
                           }
                           ?>
                       </tbody>
@@ -93,10 +97,7 @@
                   </form>
                 </div>
               </div>
-            </div>
 
-
-            <div class="col-md-4">
               <div class="card mb-4">
                 <div class="card-header">
                   <h6 class="text-gray">Tambah Bagian</h6>
@@ -125,10 +126,9 @@
                   </form>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="row">
+            </div>
+
             <div class="col-md-4">
               <div class="card mb-4">
                 <div class="card-header">
@@ -152,13 +152,12 @@
 
                           ?>
                         <tr>
-                          <td> <?= $no++; ?></td>
-                          <td> <?= $isi["nama_penelitian"]; ?></td>
+                          <td><?= $no++; ?>.</td>
+                          <td><?= $isi["nama_penelitian"]; ?></td>
                           <td>
-                            <a href="event_hapus.php?id=<?= $isi['id_event']; ?>" class="fa-sm text-gray-600"
-                              onclick="return confirm('Anda yakin akan menghapus data ?')"><i
-                                class="fa fa-trash fa-sm"></i>
-                              Hapus</a>
+                          <a href="hapus_penelitian.php?id=<?= $isi['id_penelitian']; ?>" class="fa-sm text-gray-600"
+                              onclick="return confirm('Anda yakin akan menghapus data?')"><span class="badge badge-danger"><i
+                                class="fa fa-trash fa-sm"></i></span></a>
                         </tr>
                         <?php
                         }
@@ -193,13 +192,12 @@
 
                           ?>
                         <tr>
-                          <td> <?= $no++; ?></td>
-                          <td> <?= $isi["nama_bagian"]; ?></td>
+                          <td><?= $no++; ?>.</td>
+                          <td><?= $isi["nama_bagian"]; ?></td>
                           <td>
-                            <a href="event_hapus.php?id=<?= $isi['id_event']; ?>" class="fa-sm text-gray-600"
-                              onclick="return confirm('Anda yakin akan menghapus data ?')"><i
-                                class="fa fa-trash fa-sm"></i>
-                              Hapus</a>
+                          <a href="hapus_bagian.php?id=<?= $isi['id_bagian']; ?>" class="fa-sm text-gray-600"
+                              onclick="return confirm('Anda yakin akan menghapus data?')"><span class="badge badge-danger"><i
+                                class="fa fa-trash fa-sm"></i></span></a>
                         </tr>
                         <?php
                         }
@@ -213,12 +211,13 @@
           </div>
         </div>
 
+
         <div class="tab-pane fade" id="nav-instansi" role="tabpanel" aria-labelledby="nav-instansi-tab">
           <div class="row mt-3">
             <div class="col-md-5">
               <div class="card mb-4">
                 <div class="card-header">
-                  <h6 class="text-gray">Managemen Instansi</h6>
+                  <h6 class="text-gray">Edit Instansi</h6>
                 </div>
                 <div class="card-body">
                   <form action="" method="POST" enctype="multipart/form-data">
@@ -229,6 +228,7 @@
                       $pimpinan         = $_POST['pimpinan'];
                       $nrp              = $_POST['nrp'];
                       $website          = $_POST['website'];
+                      $namalama = $_POST['namalama'];
 
 
                       $yang_boleh = array('png', 'jpg', 'jpeg');
@@ -237,62 +237,95 @@
                       $ekstensi   = strtolower(end($x));
                       $ukuran     = $_FILES['gambar']['size'];
                       $file_tmp   = $_FILES['gambar']['tmp_name'];
-                      // Rename nama fotonya dengan menambahkan tanggal dan jam upload
                       $namabaru = date('dmYHis') . $nama;
 
-                      if (in_array($ekstensi, $yang_boleh) === true) {
-                        if ($ukuran < 1044070) {
-                          move_uploaded_file($file_tmp, 'img/' . $namabaru);
-                          $tambah = "INSERT INTO instansi (id_instansi, nama_instansi, alamat, nama_pimpinan, nrp_pimpinan, website, logo) VALUES (NULL, '$nama_instansi', '$alamat_instansi', '$pimpinan', '$nrp', '$website', '$namabaru')";
-                          $masuk  = $con->query($tambah);
-                          if ($masuk) {
-                            echo '<div class="alert alert-success">Berhasil.</div>';
-                            echo '<meta http-equiv="refresh" content="2; index.php "> ';
-                          } else {
-                            echo '<div class="alert alert-danger">Gagal.</div>';
-                            echo '<meta http-equiv="refresh" content="2; index.php "> ';
+                      if(empty($nama)){
+                          $ubah  = $con->query("UPDATE instansi SET 
+                              nama_instansi   = '$nama_instansi', 
+                              alamat     = '$alamat_instansi', 
+                              nama_pimpinan = '$pimpinan',
+                              nrp_pimpinan = '$nrp', 
+                              website = '$website'
+                              ");
+                          if($ubah){
+                              echo '<div class="alert alert-success">Berhasil.</div>';
+                              echo '<meta http-equiv="refresh" content="2; index.php "> '; 
+                            } else {
+                              echo '<div class="alert alert-danger">Gagal.</div>'; 
+                              echo '<meta http-equiv="refresh" content="2; index.php "> '; 
                           }
-                        } else {
-                          echo '<div class="alert alert-info">Ukuran ngaruh. </div>';
-                          echo '<meta http-equiv="refresh" content="2; index.php "> ';
-                        }
                       } else {
-                        echo '<div class="alert alert-danger"> Ekstensi file harus gambar jpg, jpeg, dan png.</div>';
-                        echo '<meta http-equiv="refresh" content="2; index.php "> ';
+                        if(in_array($ekstensi, $yang_boleh) == true){
+                          if($ukuran < 1044070){
+                              // Cek apakah file foto sebelumnya ada di folder images
+                              if(is_file("img/".$namalama)) // Jika foto ada
+                              unlink("img/".$namalama); // Hapus file foto sebelumnya yang ada di folder images
+
+                              move_uploaded_file($file_tmp,'img/'.$namabaru);
+                              $ubah  = $con->query("UPDATE instansi SET
+                                    nama_instansi   = '$nama_instansi', 
+                                    alamat     = '$alamat_instansi', 
+                                    nama_pimpinan = '$pimpinan',
+                                    nrp_pimpinan = '$nrp', 
+                                    website = '$website',
+                                    logo = '$namabaru'
+                                    ");
+                              if($ubah){
+                                  echo '<div class="alert alert-success">Berhasil telah diedit</div>'; 
+                                  echo '<meta http-equiv="refresh" content="2; index.php "> '; 
+                              } else{
+                                  echo '<div class="alert alert-danger">Gagal.</div>'; 
+                                  echo '<meta http-equiv="refresh" content="2; index.php "> '; 
+                              }
+                          } else {
+                              echo '<div class="alert alert-info">Gambar terlalu besar</div>'; ;
+                              echo '<meta http-equiv="refresh" content="2; index.php "> '; 
+                          }
+                      } else {
+                          echo '<div class="alert alert-danger">Ekstensi gambar yaitu jpg, jpeg, png</div>'; 
+                          echo '<meta http-equiv="refresh" content="2; index.php "> '; 
                       }
-                    }
+                  }  
+                  
+                  } else {
+                      $ambil = $con->query("SELECT * FROM instansi");
+                      $hasil = $ambil->fetch_assoc();
+                  }
                     ?>
                     <div class="form-group">
                       <label for="nama_instansi">Nama Instansi</label>
                       <input type="text" class="form-control" id="nama_instansi" name="nama_instansi"
-                        placeholder="cth: Polrestabes Bandung" required>
+                      value="<?= $hasil['nama_instansi']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="alamat_instansi">Alamat</label>
                       <input type="text" class="form-control" id="alamat_instansi" name="alamat_instansi"
-                        placeholder="cth: Jl. Merdeka No.18-20 Bandung 40117" required>
+                      value="<?= $hasil['alamat']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="pimpinan">Nama Pimpinan</label>
                       <input type="text" class="form-control" id="pimpinan" name="pimpinan"
-                        placeholder="cth: Budi Yudarto, A.Md" required>
+                      value="<?= $hasil['nama_pimpinan']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="nrp">NRP Pimpinan</label>
-                      <input type="number" class="form-control" id="nrp" name="nrp" placeholder="cth: 10921829198"
+                      <input type="number" class="form-control" id="nrp" name="nrp" value="<?= $hasil['nrp_pimpinan']; ?>"
                         required>
                     </div>
                     <div class="form-group">
                       <label for="website">Website / Situs</label>
                       <input type="text" class="form-control" id="website" name="website"
-                        placeholder="cth: polrestabes-bandung.or.id" required>
+                      value="<?= $hasil['website']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label for="logo">Upload Logo </label>
-                      <input type="file" class="form-control" id="logo" name="gambar" required>
+                      <input type="file" class="form-control" id="logo" name="gambar">
+                      <p class="help-block"> * Isi jika ingen mengganti gambar ! <br>
+                     * Abaikan jika Tidak ingin mengganti gambar ! </p>
                     </div>
 
                     <button type="submit" name="tekan" class="btn btn-login">Tambah Data</button>
+                    <input type="hidden" name="namalama" value="<?= $hasil['gambar'] ; ?>">
                   </form>
                 </div>
               </div>
@@ -303,6 +336,7 @@
               <div class="card mb-4">
                 <div class="card-header">
                   <h6 class="text-gray">Managemen Instansi</h6>
+                  
                 </div>
                 <div class="card-body">
                   <?php
@@ -312,12 +346,13 @@
                   ?>
                   <div class="media">
                     <div class="media-body">
-                        <img src="<?= "img/" . $isi['logo']; ?>" class="img-responsive mb-5 ml-3" alt="logo" style=" max-width:70px;">
+                      <img src="<?= "img/" . $isi['logo']; ?>" class="img-responsive mb-3 ml-3" alt="logo"
+                        style=" max-width:70px;">
                       <h5 class="mt-0 mb-1"><?= $isi['nama_instansi']; ?></h5>
-                        <?= $isi['alamat']; ?> <br>
-                        Dipimpin Oleh <?= $isi['nama_pimpinan']; ?> <br>
-                        NRP <?= $isi['nrp_pimpinan']; ?> <br>
-                        <i>Website <?= $isi['website']; ?></i> <br>
+                      <?= $isi['alamat']; ?> <br>
+                      Dipimpin Oleh <?= $isi['nama_pimpinan']; ?> <br>
+                      NRP <?= $isi['nrp_pimpinan']; ?> <br>
+                      <i>Website <?= $isi['website']; ?></i> <br>
                     </div>
                     <?php
                     }
@@ -329,7 +364,6 @@
 
           </div>
         </div>
-        <!-- </div> -->
 
         <div class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-admin-tab">
           <div class="row mt-3">
@@ -346,29 +380,24 @@
                           <th>No</th>
                           <th>Nama</th>
                           <th>Username</th>
-                          <th>Aksi </th>
+                          <th>Hapus </th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $no = 1;
-                        $tampil = $con->query("Select * from admin");
+                        $tampil = $con->query("SELECT * FROM admin");
                         while ($isi = mysqli_fetch_assoc($tampil)) {
 
                           ?>
                         <tr>
-                          <td> <?= $no++; ?></td>
-                          <td> <?= $isi["nama_admin"]; ?></td>
+                          <td><?= $no++; ?>.</td>
+                          <td><?= $isi["nama_admin"]; ?></td>
                           <td><?= $isi["username_admin"]; ?> </td>
                           <td>
-                            <a href="event_edit.php?id=<?= $isi['id_event']; ?>" class="fa-sm text-gray-600"><i
-                                class="fa fa-edit fa-sm"></i> Edit</a> |
-                            <a href="event_hapus.php?id=<?= $isi['id_event']; ?>" class="fa-sm text-gray-600"
-                              onclick="return confirm('Anda yakin akan menghapus data ?')"><i
-                                class="fa fa-trash fa-sm"></i>
-                              Hapus</a> |
-                            <a href="event_detail.php?id=<?= $isi['id_event']; ?>" class="fa-sm text-gray-600"><i
-                                class="fa fa-eye fa-sm"></i> Detail</a>
+                            <a href="hapus_admin.php?id=<?= $isi['id_admin']; ?>" class="fa-sm text-gray-600"
+                              onclick="return confirm('Anda yakin akan menghapus data?')"><span class="badge badge-danger"><i
+                                class="fa fa-trash fa-sm"></i></span></a>
                         </tr>
                         <?php
                         }

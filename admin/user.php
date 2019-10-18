@@ -1,10 +1,11 @@
 <?php include 'header.php'; ?>
 <?php include 'menu.php'; ?>
 <div class="container-fluid">
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <div class="d-sm-flex align-items-center justify-content-between mb-3">
     <h1 class="h4 mt-5 text-gray-800">Data User</h1>
-    <a href="tambah_user.php" class="mt-5 d-none d-sm-inline-block btn btn-md btn-light">Tambah User</a>
   </div>
+  <a href="tambah_user.php" class="d-none d-sm-inline-block btn btn-md btn-light mb-2">Tambah User</a>
+  <a href="bimbing.php" class="d-none d-sm-inline-block btn btn-md btn-light mb-2">Dibimbing Oleh</a>
   <div class="row">
 
     <div class="col-md-12">
@@ -29,7 +30,7 @@
               <tbody>
                 <?php
                 $no = 1;
-                $tampil = $con->query("SELECT * FROM user JOIN jenis_penelitian USING (id_penelitian) ORDER BY nama_user ASC");
+                $tampil = $con->query("SELECT * FROM user JOIN jenis_penelitian USING (id_penelitian) ORDER BY id_user DESC");
                 while ($isi = mysqli_fetch_assoc($tampil)) {
 
                   ?>
@@ -41,7 +42,11 @@
                   <td> <?= $isi["nama_penelitian"]; ?></td>
                   <td> <?= $isi["durasi"];?> Bulan</td>
                   <td>
-                  <a href="detail_user.php?id=<?= $isi['id_user']; ?>" class="text-gray-600">Lihat</a>
+
+                  <a href="edit_user.php?id=<?= $isi['id_user']; ?>" class="text-gray-600"><span class="badge badge-info">Edit</span></a>
+                  <a href="hapus_user.php?id=<?= $isi['id_user']; ?>" class="fa-sm text-gray-600"
+                  onclick="return confirm('Anda yakin akan menghapus data?')"><span class="badge badge-danger">Hapus</span></a>
+                  <a href="detail_user.php?id=<?= $isi['id_user']; ?>" class="text-gray-600"><span class="badge badge-dark">Lihat</span></a>
                 </tr>
                 <?php
                   }

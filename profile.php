@@ -28,8 +28,8 @@ if (isset($_SESSION['username'])) {
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="jumbotron">
-  <div class="container">
+<div class="jumbotron" style="background-color: #fff;">
+  <div class="container mb-3">
     <div class="media">
       <?php
         $no = 1;
@@ -37,9 +37,9 @@ if (isset($_SESSION['username'])) {
         while ($isi = mysqli_fetch_assoc($tampil)) {
 
         ?>
-      <img src="<?= "admin/img/" . $isi['logo']; ?>" class="mr-3" alt="logo" style=" max-width:100px;">
+      <img src="<?= "admin/img/" . $isi['logo']; ?>" class="mr-3" alt="logo" style=" max-width:120px;">
       <div class="media-body">
-        <h1 class="display-4"><?= $isi['nama_instansi']; ?></h1>
+        <h1 class="judul mt-4"><?= $isi['nama_instansi']; ?></h1>
         <p class="lead">Melindungi, Mengayomi dan Melayani Masyarakat.</p>
         <?php 
         }
@@ -48,12 +48,24 @@ if (isset($_SESSION['username'])) {
     </div>
   </div>
 </div>
-<div class="container">
+<hr>
+<div class="container mb-3">
   <div class="row">
     <div class="col-md-12">
       <h1 class="judul">Stuktur Organisasi</h1>
       <p class="sub">Struktur Organisasi Polrestabes Bandung</p>
       <img src="img/struktur.jpg" class="img-fluid mb-3" alt="">
+      
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="judul">Bagian</h1>
+      <p class="sub">Struktur Organisasi Polrestabes Bandung</p>
+     
       
     </div>
   </div>

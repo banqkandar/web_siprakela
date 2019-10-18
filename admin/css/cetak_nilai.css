@@ -1,0 +1,94 @@
+h1, h2, h3, h4, h5, h6, p {
+    color: #000  ;
+    font-family: 'Times New Roman', Times, serif;
+}
+.header {
+    padding: 10px;
+}
+
+.j-header {
+    padding-top: 20px;
+    font-size: 44px;
+    text-transform: uppercase;
+}
+
+.s-header {
+    font-size: 20px;
+}
+
+.judul {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1em;
+    margin-bottom: 30px;
+}
+
+span {
+    text-decoration: underline;
+}
+
+.header-judul {
+    margin-left: 25%;
+    font-size: 20px;
+}
+
+.isi-identitas {
+    font-size: 20px;
+}
+
+p.as {
+    line-height: 0.9em;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    border-collapse: collapse;
+    width: 75%;
+    margin: auto;
+    font-size: 20px;
+}
+
+th {
+    height: 30px;
+}
+
+th.th1 {
+    width: 1%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+th.th2 {
+    width: 18%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+th.th3 {
+    width: 10%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+th.th4 {
+    width: 10%;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1em;
+}
+
+td.td1, td.td3, td.td4  {
+    text-align: center;
+}
+
+td.td2 {
+    padding-left: 10px;
+}

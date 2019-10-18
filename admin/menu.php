@@ -15,8 +15,13 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="surat.php">
-            <span>Buat surat</span>
+        <a class="nav-link" href="absen.php">
+        <?php
+            $notif = $con->query("SELECT COUNT(*) FROM absen WHERE status_masuk = 'Belum Absen Masuk' ");
+            $row = mysqli_fetch_row($notif);
+            $hasil = $row[0];
+        ?>
+            <span>Absen<span class="badge badge-danger badge-counter mr-2"><?= $hasil; ?> belum konfirmasi</span></span>
         </a>
     </li>
 
@@ -31,6 +36,13 @@
             <span>Kelola Pembimbing</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="penilaian.php">
+            <span>Grade</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading mt-2">

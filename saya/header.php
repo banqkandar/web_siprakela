@@ -42,16 +42,16 @@ if (!(isset($_SESSION['username']))) {
                     <img class="mb-2" src="img/user.svg" style="width:5em">
                     <?php
                     // if ($_SESSION['admin']) {
-                    //     $admin = $_SESSION['admin'];
-                        $ambil = $con->query("SELECT * FROM user");
-                        $data = $ambil->fetch_array();
+                    $username = $_SESSION['username'];
+                    $ambil = $con->query("SELECT * FROM user WHERE id_user = $username");
+                    $data = $ambil->fetch_array();
                     // } else {
                     //     $user = $_SESSION['username'];
                     //     $ambil = $con->query("SELECT * FROM user where id_user='$user'");
                     //     $data = $ambil->fetch_array();
                     // } 
                     ?>
-                <h1 class="h6 text-white"><?= $data['nama_user'] ?></h1>
+                    <h1 class="h6 text-white"><?= $data['nama_user'] ?></h1>
                 </div>
             </div>
             <hr class="sidebar-divider my-0">

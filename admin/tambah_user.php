@@ -10,29 +10,6 @@
     <div class="col-md-6">
       <div class="card mb-4">
         <div class="card-header">
-          <h6 class="text-gray">Generate Username dan Password</h6>
-        </div>
-        <div class="card-body">
-          <form class="user" action="" method="post">
-            <div class="form-group">
-              <label for="name">Username</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="cth: Justin Bieber" autofocus
-                required>
-            </div>
-            <div class="form-group">
-              <label for="pass">Password</label>
-              <input type="password" class="form-control" id="pass" name="pass" placeholder="**************" required>
-            </div>
-
-            <button type="submit" name="generate" class="btn btn-login">Generate</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="card mb-4">
-        <div class="card-header">
           <h6 class="text-gray">Tambah User Penelitian</h6>
         </div>
         <div class="card-body">

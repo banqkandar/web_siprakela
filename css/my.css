@@ -13,6 +13,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
 }
 
+h4.judul-card{
+    color: #191919;
+    font-weight: bold;
+    font-size: 22px;
+    line-height:1.3em;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif;
+}
+
 p.subjudul {
     color: #CED0CE;
     font-size: 14px;
@@ -211,3 +221,11 @@ a.btn-minat:hover {
 
 /* ----------------------------------------------- */
 
+.kotak{
+    margin-right: 10px;
+    float: left;
+    border: 1px solid #191919;
+    width: 30px;
+    height: 30px;
+    color: #000;
+}
