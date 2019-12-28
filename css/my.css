@@ -65,6 +65,16 @@ hr.bullet:before {
     border-radius: 100px;
 }
 
+span.harus {
+    color: #d40000;
+}
+
+span.des {
+    font-weight: 400;
+    font-size: 12px;
+    color: #d40000;
+}
+
 a.btn-regis {
     border: 1px solid #EFEFEF; 
     color: #CED0CE;
@@ -193,7 +203,7 @@ a.btn-minat:hover {
 }
 
 .btn.btn-minat {
-    color: #191919;
+    color: #EFEFEF;
     width: 140px;
     height: 45px;
     font-family: 'Montserrat', sans-serif;
@@ -216,7 +226,7 @@ a.btn-minat:hover {
 
 .btn.btn-minat:hover {
     background-color: rgb(243, 67, 19);
-    color: #191919;
+    color: #EFEFEF;
 }
 
 /* ----------------------------------------------- */

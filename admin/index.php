@@ -31,7 +31,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th width="4%">Email</th>
+                          <th width="4%">Whatsapp</th>
                           <th>Instansi</th>
                           <th>Akan Melakukan</th>
                           <th>Dibagian</th>
@@ -47,7 +47,11 @@
                           ?>
                         <tr>
                           <td><?= $no++; ?>.</td>
-                          <td><?= $isi["email"]; ?></td>
+                          <td>
+                            <?php $link = "https://wa.me/$isi[nowa]?text=Pengajuan%20Anda%20diterima%20oleh%20pihak%20Polrestabes."; ?>
+                          <a href="<?= $link; ?>" target="_blank"><?= $isi["nowa"]; ?></a>
+                            
+                          </td>
                           <td><?= $isi["kampus"]; ?> </td>
                           <td><?= $isi["nama_penelitian"]; ?> </td>
                           <td><?= $isi["nama_bagian"]; ?> </td>

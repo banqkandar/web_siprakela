@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                     <img class="mb-3 mt-3" src="img/11.svg" style="width:10em;">
-                    <h4 class="judul-card">Special title treatment</h4>
+                    <h4 class="judul-card">Perekrutan</h4>
                     <p class="subjudul">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -44,7 +44,7 @@ if (isset($_SESSION['username'])) {
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                 <img class="mb-3 mt-3" src="img/12.svg" style="width:10em;">
-                    <h4 class="judul-card">Special title treatment</h4>
+                    <h4 class="judul-card">Pengalaman</h4>
                     <p class="subjudul">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -53,7 +53,7 @@ if (isset($_SESSION['username'])) {
             <div class="card text-center" style="width: 18rem;">
                 <div class="card-body">
                 <img class="mb-3 mt-3" src="img/13.svg" style="width:9em;">
-                    <h4 class="judul-card">Special title treatment</h4>
+                    <h4 class="judul-card">Penghargaan</h4>
                     <p class="subjudul">With supporting text below as a natural lead-in to additional content.</p>
                 </div>
             </div>
@@ -95,11 +95,11 @@ if (isset($_SESSION['username'])) {
             <form class="user" method="post" action="">
                 <?php
                 if (isset($_POST['simpan'])) {
-                    $email          = $_POST['email'];
+                    $nowa          = $_POST['nowa'];
                     $kampus         = $_POST['kampus'];
                     $idpenelitian   = $_POST['idpenelitian'];
                     $idbagian       = $_POST['idbagian'];
-                    $tambah = "INSERT INTO pengajuan (id_pengajuan, email, kampus, id_penelitian, id_bagian, tanggal) VALUES (null,'$email','$kampus','$idpenelitian','$idbagian',now())";
+                    $tambah = "INSERT INTO pengajuan (id_pengajuan, nowa, kampus, id_penelitian, id_bagian, tanggal) VALUES (null,'$nowa','$kampus','$idpenelitian','$idbagian',now())";
                     $masuk  = $con->query($tambah);
                     if ($masuk) {
                         echo '<div class="alert alert-success">Berhasil.</div>';
@@ -111,20 +111,21 @@ if (isset($_SESSION['username'])) {
                 }
                 ?>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control form-control-sm" id="email" name="email"
-                        placeholder="cth: example@gmail.com" required>
+                    <label for="nowa">No Whatsapp <span class="harus">*</span></label>
+                    <input type="number" class="form-control form-control-sm" id="nowa" name="nowa"
+                        placeholder="628xxxxxxxxxx" size="13" required>
+                        <span class="des">Nomor whatsapp anda yang aktif</span>
                 </div>
 
                 <div class="form-group">
-                    <label for="kampus">Instansi/Kampus</label>
+                    <label for="kampus">Instansi/Kampus <span class="harus">*</span></label>
                     <input type="text" class="form-control form-control-sm" id="kampus" name="kampus"
                         placeholder="cth: UNIKOM" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Sedang Penelitian</label>
-                    <select name="idpenelitian" class="form-control" required>
+                    <label>Sedang Penelitian <span class="harus">*</span></label>
+                    <select name="idpenelitian" class="form-control form-control-sm" required>
                         <option value="">Pilih penelitian</option>
                         <?php
                         $tampil = $con->query("SELECT id_penelitian , nama_penelitian  FROM jenis_penelitian");
@@ -136,8 +137,8 @@ if (isset($_SESSION['username'])) {
                 </div>
 
                 <div class="form-group">
-                    <label>Bagian</label>
-                    <select name="idbagian" class="form-control" required>
+                    <label>Bagian <span class="harus">*</span></label>
+                    <select name="idbagian" class="form-control form-control-sm" required>
                         <option value="">Pilih bagian</option>
                         <?php
                         $tampil = $con->query("SELECT id_bagian , nama_bagian  FROM bagian");
