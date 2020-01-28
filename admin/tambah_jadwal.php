@@ -3,7 +3,6 @@
 <div class="container-fluid">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mt-5 text-gray-800">Jadwal</h1>
-    <a href="jadwal.php" class="mt-5 d-none d-sm-inline-block btn btn-md btn-light">Kembali</a>
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -24,17 +23,17 @@
                 $tambah = "INSERT INTO agenda (id_agenda, judul_agenda, tanggal, waktu, tempat, ringkasan, status) VALUES (null,'$judul','$tanggal','$waktu','$tempat','$ringkasan', '$status')";
                 $masuk  = $con->query($tambah); 
                 if($masuk){
-                    echo '<div class="alert alert-success">Berhasil.</div>';
+                    echo '<div class="alert alert-success">Data berhasil ditambahkan</div>';
                     echo '<meta http-equiv="refresh" content="2; jadwal.php "> ';
                 }else{
-                    echo '<div class="alert alert-danger">Gagal.</div>';
+                    echo '<div class="alert alert-danger">data gagal ditambahkan</div>';
                     echo '<meta http-equiv="refresh" content="2; tambah_jadwal.php "> ';
                 }
             }
             ?>
             <div class="form-group">
               <label for="judul">Judul</label>
-              <input type="text" class="form-control" id="judul" name="judul" placeholder="cth: Pemasangan CCTV" autofocus required>
+              <input type="text" class="form-control" id="judul" name="judul" placeholder="Pemasangan CCTV" autofocus required>
             </div>
             <div class="form-group">
               <label for="tanggal">Hari, tanggal</label>
@@ -46,7 +45,7 @@
             </div>
             <div class="form-group">
               <label for="tempat">Tempat</label>
-              <input type="text" class="form-control" id="tempat" name="tempat" placeholder="cth: Gedung Sate"
+              <input type="text" class="form-control" id="tempat" name="tempat" placeholder="Gedung Sate"
                 required>
             </div>
             <div class="form-group">

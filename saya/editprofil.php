@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="h4 mt-5 text-gray-800 ">Edit Profile</h1>
-      <p class="subjudul">Informasi valid adalah kunci keberhasilan</p>
+      <p class="subjudul">Informasi ini berkaitan dengan edit profile</p>
     </div>
   </div>
 
@@ -20,49 +20,67 @@
           <form action="" method="post">
             <?php
             if (isset($_POST['update'])) {
-              $nama          = $_POST['nama'];
-              $instansi      = $_POST['instansi'];
+              $uname      = $_POST['username'];
               $noinduk       = $_POST['noinduk'];
               $jurusan       = $_POST['jurusan'];
+              $pendidikan    = $_POST['pendidikan'];
 
-              $update = "UPDATE user SET nama_user='$nama', no_induk='$noinduk' , instansi='$instansi', jurusan = '$jurusan' WHERE id_user = '$username'";
+              $update =   "UPDATE user SET 
+                            username = '$uname' ,
+                            no_induk = '$noinduk' ,
+                            jurusan = '$jurusan' ,
+                            pendidikan = '$pendidikan'
+                          WHERE
+                              id_user = '$username' 
+                          ;";
               $masuk  = $con->query($update); 
               if($masuk){
-                echo '<div class="alert alert-success">Berhasil update.</div>';
+                echo '<div class="alert alert-success">Data profil berhasil diubah</div>';
                 echo '<meta http-equiv="refresh" content="2; editprofil.php "> ';
               }else{
-                echo '<div class="alert alert-danger">gagal.</div>';
+                echo '<div class="alert alert-danger">Data gagal diubah</div>';
                 echo '<meta http-equiv="refresh" content="2; editprofil.php "> ';
               }
             }
             ?>
             <?php 
             $username = $_SESSION['username'];
-            $tampil = $con->query("SELECT * FROM user WHERE id_user = '$username'");
+            $tampil = $con->query("SELECT * FROM user JOIN pengajuan using(id_pengajuan) WHERE id_user = '$username'");
             $ambil = $tampil->fetch_assoc();
             ?>
+
+           <div class="form-group">
+              <label for="nama">Nama Lengkap</label>
+              <input type="text" class="form-control" id="nama" name="nama" value="<?= ucwords($ambil['nama']);?>" required disabled>
+            </div>
+
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" class="form-control" id="username" name="username" value="<?= $ambil['username'];?>"
-               required disabled>
+               required>
             </div>
-            <div class="form-group">
-              <label for="nama">Nama Lengkap</label>
-              <input type="text" class="form-control" id="nama" name="nama" value="<?= $ambil['nama_user'];?>" required>
-            </div>
-            <div class="form-group">
-              <label for="instansi">Instansi</label>
-              <input type="text" class="form-control" id="instansi" name="instansi" value="<?= $ambil['instansi'];?>" required>
-            </div>
+
             <div class="form-group">
               <label for="noinduk">No Induk</label>
               <input type="number" class="form-control" id="noinduk" name="noinduk" value="<?= $ambil['no_induk'];?>"
                 required>
             </div>
+
             <div class="form-group">
               <label for="jurusan">Jurusan</label>
               <input type="text" class="form-control" id="jurusan" name="jurusan" value="<?= $ambil['jurusan'];?>"
                 required>
+            </div>
+
+            <div class="form-group">
+              <label>Pendidikan</label>
+              <select name="pendidikan" class="form-control" required>
+                <option value="">Pilih pendidikan</option>
+                <option value="sma">SMA</option>
+                <option value="smk">SMK</option>
+                <option value="s1">Strata 1</option>
+                <option value="d3">Diploma 3</option>
+              </select>
             </div>
 
             <button type="submit" name="update" class="btn btn-login">Update Data</button>
@@ -103,11 +121,13 @@
                 }
             }
             ?>
+
             <div class="form-group">
               <label for="pass_lama">Password Lama</label>
               <input type="password" class="form-control" id="pass_lama" name="pass_lama"
                required>
             </div>
+
             <div class="form-group">
               <label for="pass_baru">Password Baru</label>
               <input type="password" class="form-control" id="pass_baru" name="pass_baru"

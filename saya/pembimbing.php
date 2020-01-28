@@ -6,34 +6,31 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="h4 mt-5 text-gray-800 ">Pembimbing</h1>
-      <p class="subjudul">Informasi valid adalah kunci keberhasilan</p>
+      <p class="subjudul">Informasi ini berkaitan dengan data pembimbing</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="card mb-4">
         <div class="card-header">
-          <h6 class="text-gray">Data Pembimbing</h6>
+          <h6 class="text-gray">List Pembimbing</h6>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <div class="row">
-              <?php
-              $tampil = $con->query("SELECT * FROM pembimbing ORDER BY id_pembimbing DESC");
-              while ($isi = mysqli_fetch_assoc($tampil)) {
-              ?>
-
-              <div class="card shadow ml-3 mb-4">
-                <div class="card-body">
-                  <h5 class="card-title"><?= $isi['nama_pembimbing']; ?></h5>
-                  <p class="card-text"><?= $isi['nrp_pembimbing']; ?></p>
+              <div class="col-md-12">
+                <?php 
+                $no=1;
+                $username = $_SESSION['username'];
+                $ambil      = $con->query("SELECT * FROM bimbing JOIN user using(id_user) JOIN pengajuan using(id_pengajuan) JOIN pembimbing using(id_pembimbing) WHERE id_user = $username ORDER BY id_user ASC");
+                while ($isi = $ambil->fetch_assoc()) { ?>
+                <div class="m-2">
+                    <div class="card p-1">
+                      <?= $no++; ?>. Dibimbing oleh <?= ucwords($isi['nama_pembimbing']); ?>
+                      <a href="detail_pembimbing.php?id=<?= $isi['id_pembimbing']; ?>" class="fa-sm text-gray-600"><span class="badge badge-info">Lihat</span></a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><?= $isi['no_telepon']; ?></li>
-                  <li class="list-group-item"><?= $isi['jabatan']; ?></li>
-                </ul>
-              </div>
-              <?php } ?>
+                <?php } ?>
             </div>
           </div>
         </div>

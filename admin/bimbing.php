@@ -8,28 +8,30 @@
         <div class="col-md-5">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h6 class="text-gray">Penempatan user oleh pembimbing</h6>
+                    <h6 class="text-gray">Penempatan user dengan pembimbing</h6>
                 </div>
                 <div class="card-body">
                     <form class="user" method="post" action="">
                         <?php
                     if (isset($_POST['tambah'])) {
-                        $user = $_POST['user'];
+                        $user       = $_POST['user'];
                         $pembimbing = $_POST['pembimbing'];
 
-                        $cek    = $con->query("SELECT * FROM bimbing WHERE id_user ='$user' and id_pembimbing ='$pembimbing'");
-                        $hasil    = $cek->fetch_array();
+                        $cek        = $con->query("SELECT * FROM bimbing WHERE id_user ='$user' AND id_pembimbing ='$pembimbing'");
+                        $hasil      = $cek->fetch_array();
 
                         if ($hasil) {
-                            echo '<div class="alert alert-danger"> Proses ini tidak boleh sama.</div>';
+                            echo '<div class="alert alert-danger">Penempatan user dengan pembimbing tidak boleh sama.</div>';
+                            echo '<meta http-equiv="refresh" content="2; bimbing.php "> ';
                         } else { 
                             $tambah = "INSERT INTO bimbing VALUES('','$user','$pembimbing')";
                             $masuk = $con->query($tambah);
                             if ($masuk) {
-                                echo '<div class="alert alert-success">Berhasil.</div>';
+                                echo '<div class="alert alert-success">Berhasil dipasangkan</div>';
                                 echo '<meta http-equiv="refresh" content="2; bimbing.php "> ';
                             } else {
-                                echo '<div class="alert alert-danger">Gagal.</div>';
+                                echo '<div class="alert alert-danger">Gagal dipasangkan</div>';
+                                echo '<meta http-equiv="refresh" content="2; bimbing.php "> ';
                             }
                         }
                     }
@@ -40,9 +42,9 @@
                             <select name="user" class="form-control" required>
                                 <option value="">Pilih User</option>
                                 <?php
-                            $tampil = $con->query("SELECT id_user , nama_user  FROM user");
+                            $tampil = $con->query("SELECT * FROM user JOIN pengajuan USING (id_pengajuan)");
                             while ($r = mysqli_fetch_assoc($tampil)) {
-                                echo '<option value="' . $r[id_user] . '" >' . $r[nama_user] . '</option>';
+                                echo '<option value="' . $r['id_user'] . '" >' . ucwords($r['nama']) . ' - ' . $r['email'] . '</option>';
                             }
                             ?>
                             </select>
@@ -55,7 +57,7 @@
                                 <?php
                             $tampil = $con->query("SELECT id_pembimbing , nama_pembimbing  FROM pembimbing");
                             while ($r = mysqli_fetch_assoc($tampil)) {
-                                echo '<option value="' . $r[id_pembimbing] . '" >' . $r[nama_pembimbing] . '</option>';
+                                    echo '<option value="' . $r['id_pembimbing'] . '" >' . ucwords($r['nama_pembimbing']) . '</option>';
                             }
                             ?>
                             </select>
@@ -69,17 +71,18 @@
         <div class="col-md-7">
             <div class="card">
                 <div class="card-header">
-                    <h6 class="text-gray">Penempatan user oleh pembimbing</h6>
+                    <h6 class="text-gray">Penempatan user dengan pembimbing</h6>
                 </div>
                 <?php 
                 $no=1;
-                $ambil = $con->query("SELECT * FROM bimbing join user using(id_user) join pembimbing using(id_pembimbing) ");
+                $ambil      = $con->query("SELECT * FROM bimbing join user using(id_user) join pengajuan using(id_pengajuan) join pembimbing using(id_pembimbing) ORDER BY id_user ASC");
                 while ($isi = $ambil->fetch_assoc()) { ?>
-                <div class="card-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <?= $no++; ?>. <?= $isi['nama_user']; ?>(User) dibimbing oleh <?= $isi['nama_pembimbing']; ?>(Pembimbing)
-                        </div>
+                <div class="m-2">
+                    <div class="card p-1">
+                            <?= $no++; ?>. <?= ucwords($isi['nama']); ?>(User) dibimbing oleh <?= ucwords($isi['nama_pembimbing']); ?>(Pembimbing)
+                            <a href="hapus_bimbing.php?id=<?= $isi['id_bimbing']; ?>" class="fa-sm text-gray-600"
+                      onclick="return confirm('Anda yakin akan memputuskan pasangan user?')"><span class="badge badge-danger">Hapus</span></a>
+
                     </div>
                 </div>
                 <?php } ?>

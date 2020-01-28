@@ -11,7 +11,7 @@ if (isset($_SESSION['username'])) {
 <div class="container h-100 mt-5">
     <div class="row align-items-center justify-content-center ">
         <div class="col-lg-3">
-            <a href="index.php" target="_blank">
+            <a href="index.php">
                 <img src="img/global.png" class="logo" width="50" alt="logo siprakela" />
             </a>
             <h1 class="h3 font-weight-bold mt-4 pt-1 judul-login">Masuk</h1>
@@ -29,8 +29,12 @@ if (isset($_SESSION['username'])) {
                         if (password_verify($userpass, $admin_password)) {
                             session_start();
                             $_SESSION['admin']   = $admin['id_admin'];
-                            echo '<div class="alert alert-success">Anda berhasil login.</div>';
-                            echo '<meta http-equiv="refresh" content="1; admin "> ';
+                            echo '
+                                <script>
+                                    window.alert("Anda berhasil login sebagai admin.");
+                                    window.location = "admin";
+                                </script>
+                            ';
                         } else {
                             echo '<div class="alert alert-danger">Username atau Password anda salah!</div>';
                             echo '<meta http-equiv="refresh" content="2; login.php "> ';
@@ -43,15 +47,38 @@ if (isset($_SESSION['username'])) {
                             if (password_verify($userpass, $user_password)) {
                                 session_start();
                                 $_SESSION['username'] = $user['id_user'];
-                                echo '<div class="alert alert-success">Anda berhasil login.</div>';
-                                echo '<meta http-equiv="refresh" content="1; saya "> ';
+                                echo '
+                                <script>
+                                    window.alert("Anda berhasil login sebagai user.");
+                                    window.location = "saya";
+                                </script>
+                            ';
                             } else {
                                 echo '<div class="alert alert-danger">Username atau Password anda salah!</div>';
                                 echo '<meta http-equiv="refresh" content="2; login.php "> ';
                             }
                         } else {
-                            echo '<div class="alert alert-danger">Gagal masuk, belum terdaftar</div>';
-                            echo '<meta http-equiv="refresh" content="2; login.php "> ';
+                            $cek = $con->query("SELECT * FROM pembimbing WHERE username = '$username'");
+                            $pembimbing = $cek->fetch_assoc();
+                            $pembimbing_password = $pembimbing['password'];
+                            if ($cek->num_rows == 1) {
+                                if (password_verify($userpass, $pembimbing_password)) {
+                                    session_start();
+                                    $_SESSION['pembimbing'] = $pembimbing['id_pembimbing'];
+                                    echo '
+                                    <script>
+                                        window.alert("Anda berhasil login sebagai pembimbing.");
+                                        window.location = "pembimbing";
+                                    </script>
+                                ';
+                                } else {
+                                    echo '<div class="alert alert-danger">Username atau Password anda salah!</div>';
+                                    echo '<meta http-equiv="refresh" content="2; login.php "> ';
+                                }
+                            } else {
+                                echo '<div class="alert alert-danger">Gagal masuk, belum terdaftar</div>';
+                                echo '<meta http-equiv="refresh" content="2; login.php "> ';
+                            }
                         }
                     }
                 }
@@ -59,7 +86,7 @@ if (isset($_SESSION['username'])) {
                 <label class="sr-only" for="username">Username</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="tiny material-icons">album</i></div>
+                        <div class="input-group-text"><i class="fas fa-user"></i></div>
                     </div>
                     <input type="text" class="form-control" id="username" name="uname" placeholder="Username" autofocus required>
                 </div>
@@ -67,14 +94,14 @@ if (isset($_SESSION['username'])) {
                 <label class="sr-only" for="password">Password</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="tiny material-icons">lock</i></div>
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
                     </div>
                     <input type="password" class="form-control" id="password" name="pswd" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-login mt-4">Masuk Akun Saya</button>
                 <hr class="bullet" />
             </form>
-            <a href="daftar.php" class="btn btn-regis btn-block ">Daftar Akun Baru</a>
+            <a href="daftar.php" class="btn btn-regis btn-block ">Daftar Akun Baru untuk Admin</a>
         </div>
     </div>
 </div>

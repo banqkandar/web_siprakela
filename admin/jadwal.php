@@ -4,7 +4,7 @@
   <div class="d-sm-flex align-items-center justify-content-between mb-3">
     <h1 class="h4 mt-5 text-gray-800">Jadwal</h1>
   </div>
-  <a href="tambah_jadwal.php" class="d-none d-sm-inline-block btn btn-md btn-light mb-2">Tambah Jadwal</a>
+  <a href="tambah_jadwal.php" class="d-none d-sm-inline-block btn btn-md btn-secondary mb-2">Tambah Jadwal</a>
   <div class="row">
 
     <div class="col-md-12">
