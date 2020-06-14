@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /*
 $filenya = $_GET[''];
 if (file_exists(files / $file)) {
@@ -19,6 +20,8 @@ if (file_exists(files / $file)) {
 
     */
 
+=======
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
     if (isset($_GET['filename'])) {
         $filename    = $_GET['filename'];
     

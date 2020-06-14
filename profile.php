@@ -59,15 +59,4 @@ if (isset($_SESSION['username'])) {
     </div>
   </div>
 </div>
-<hr>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="judul">Bagian</h1>
-      <p class="sub">Struktur Organisasi Polrestabes Bandung</p>
-     
-      
-    </div>
-  </div>
-</div>
 <?php include 'footer.php'; ?>

@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 23, 2020 at 12:56 PM
+=======
+-- Generation Time: Jan 28, 2020 at 12:48 AM
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -37,6 +41,21 @@ CREATE TABLE `absen` (
   `tanggal_acc` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+<<<<<<< HEAD
+=======
+--
+-- Dumping data for table `absen`
+--
+
+INSERT INTO `absen` (`id_absen`, `id_user`, `tanggal_absen`, `jam_masuk`, `status_masuk`, `tanggal_acc`) VALUES
+(19, 11, '2020-01-25', '10:14:29', 'telah absen', '2020-01-25 04:14:53'),
+(20, 12, '2020-01-24', '10:19:54', 'telah absen', '2020-01-25 10:20:14'),
+(21, 12, '2020-01-25', '10:48:44', 'telah absen', '2020-01-25 10:49:16'),
+(22, 11, '2020-01-26', '06:31:22', 'telah absen', '2020-01-26 06:35:50'),
+(23, 12, '2020-01-26', '06:31:46', 'telah absen', '2020-01-26 06:35:47'),
+(24, 12, '2020-01-27', '09:36:39', 'menunggu konfirmasi', '0000-00-00 00:00:00');
+
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 -- --------------------------------------------------------
 
 --
@@ -100,7 +119,12 @@ CREATE TABLE `bimbing` (
 INSERT INTO `bimbing` (`id_bimbing`, `id_user`, `id_pembimbing`) VALUES
 (8, 11, 9),
 (9, 12, 8),
+<<<<<<< HEAD
 (10, 11, 8);
+=======
+(10, 11, 8),
+(11, 12, 9);
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 -- --------------------------------------------------------
 
@@ -123,7 +147,11 @@ CREATE TABLE `instansi` (
 --
 
 INSERT INTO `instansi` (`id_instansi`, `nama_instansi`, `alamat`, `nama_pimpinan`, `nrp_pimpinan`, `website`, `logo`) VALUES
+<<<<<<< HEAD
 (1, 'Polrestabes Bandung', 'Jl. Merdeka No.18, Bandung, Jawa Barat 40117', 'Cecep Suharto', '457183940', 'http://polrestabes-bandung.or.id/', '1901202003122013102019133334logo-polisi.png');
+=======
+(1, 'Polrestabes Bandung', 'Jl. Merdeka No.18, Bandung, Jawa Barat 40117', 'Budi Yundarna', '457183940', 'http://polrestabes-bandung.or.id/', '1901202003122013102019133334logo-polisi.png');
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 -- --------------------------------------------------------
 
@@ -175,7 +203,17 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `id_user`, `gambar`, `tanggal_upload`) VA
 (7, 11, '20.jpg', '2020-01-23 00:00:00'),
 (8, 11, '21.jpg', '2020-01-23 00:00:00'),
 (9, 11, '22.jpg', '2020-01-23 00:00:00'),
+<<<<<<< HEAD
 (10, 11, '23.jpg', '2020-01-23 00:00:00');
+=======
+(10, 11, '23.jpg', '2020-01-23 00:00:00'),
+(21, 11, '34.jpg', '2020-01-25 12:39:46'),
+(22, 11, '35.jpg', '2020-01-25 12:39:46'),
+(23, 11, '36.jpg', '2020-01-25 12:39:46'),
+(24, 12, '3.jpg', '2020-01-27 09:39:01'),
+(25, 12, '4.jpg', '2020-01-27 09:39:01'),
+(26, 12, '5.jpg', '2020-01-27 09:39:01');
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 -- --------------------------------------------------------
 
@@ -227,7 +265,15 @@ INSERT INTO `pengajuan` (`id_pengajuan`, `nama`, `email`, `kampus`, `id_peneliti
 (7, 'tara budiman', 'tara@gmail.com', 'unikom', 2, '19012020051236kusioner.docx', 'diterima', '2020-01-19 11:12:36'),
 (8, 'sr', 'sr@gmail.bom', 'Unikom', 1, 'kusioner.docx', 'diterima', '2020-01-19 11:28:21'),
 (9, 'buhori', 'misimatu23r32pang@gmail.com', 'sadasd', 3, 'Villamil.docx', 'tidak diterima', '2020-01-19 11:53:45'),
+<<<<<<< HEAD
 (10, 'Roni susan', 'roni@gmail.com', 'Amikom', 3, 'SURAT PENGHASILAN.pdf', 'belum diterima', '2020-01-19 22:12:06');
+=======
+(10, 'Roni susan', 'roni@gmail.com', 'Amikom', 3, 'SURAT PENGHASILAN.pdf', 'diterima', '2020-01-19 22:12:06'),
+(12, 'Ahmadi saleh', 'ahmad@gmail.com', 'Tel-u', 1, 'review new.docx', 'belum diterima', '2020-01-26 19:24:46'),
+(13, 'Bayu suprianto', 'bayu@gmail.com', 'ITHB', 2, 'coolfreecv_resume_en_01.doc', 'belum diterima', '2020-01-26 19:25:41'),
+(14, 'Ridwan dadu', 'ridwan@gmail.com', 'Unikom', 5, 'Laporan KP ( Revisi ).docx', 'belum diterima', '2020-01-26 19:26:25'),
+(15, 'tara budiman', 'misimatupang@gmail.com', 'Unikom', 5, 'TRAIN_AWAY_e-ticket (1).pdf', 'tidak diterima', '2020-01-27 09:07:37');
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 -- --------------------------------------------------------
 
@@ -251,7 +297,12 @@ CREATE TABLE `penilaian` (
 --
 
 INSERT INTO `penilaian` (`id_nilai`, `id_user`, `id_instansi`, `a1`, `a2`, `a3`, `a4`, `a5`) VALUES
+<<<<<<< HEAD
 (2, 11, 1, 54, 90, 90, 90, 56);
+=======
+(3, 11, 1, 90, 90, 90, 90, 90),
+(4, 12, 1, 54, 90, 90, 90, 56);
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 -- --------------------------------------------------------
 
@@ -346,7 +397,11 @@ ALTER TABLE `pengajuan`
 --
 ALTER TABLE `penilaian`
   ADD PRIMARY KEY (`id_nilai`),
+<<<<<<< HEAD
   ADD KEY `id_instansi` (`id_instansi`),
+=======
+  ADD KEY `penilaian_ibfk_2` (`id_instansi`),
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
   ADD KEY `id_user` (`id_user`);
 
 --
@@ -364,7 +419,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absen`
 --
 ALTER TABLE `absen`
+<<<<<<< HEAD
   MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+=======
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -382,7 +441,11 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT for table `bimbing`
 --
 ALTER TABLE `bimbing`
+<<<<<<< HEAD
   MODIFY `id_bimbing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+=======
+  MODIFY `id_bimbing` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- AUTO_INCREMENT for table `instansi`
@@ -400,7 +463,11 @@ ALTER TABLE `jenis_penelitian`
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
+<<<<<<< HEAD
   MODIFY `id_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+=======
+  MODIFY `id_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- AUTO_INCREMENT for table `pembimbing`
@@ -412,13 +479,21 @@ ALTER TABLE `pembimbing`
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
+<<<<<<< HEAD
   MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+=======
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- AUTO_INCREMENT for table `penilaian`
 --
 ALTER TABLE `penilaian`
+<<<<<<< HEAD
   MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -459,8 +534,13 @@ ALTER TABLE `pengajuan`
 -- Constraints for table `penilaian`
 --
 ALTER TABLE `penilaian`
+<<<<<<< HEAD
   ADD CONSTRAINT `penilaian_ibfk_2` FOREIGN KEY (`id_instansi`) REFERENCES `instansi` (`id_instansi`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `penilaian_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+=======
+  ADD CONSTRAINT `penilaian_ibfk_2` FOREIGN KEY (`id_instansi`) REFERENCES `instansi` (`id_instansi`) ON DELETE CASCADE,
+  ADD CONSTRAINT `penilaian_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE;
+>>>>>>> 981d4c0930f97f3f417b998220af58abe0e0659a
 
 --
 -- Constraints for table `user`

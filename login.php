@@ -101,7 +101,7 @@ if (isset($_SESSION['username'])) {
                 <button type="submit" class="btn btn-login mt-4">Masuk Akun Saya</button>
                 <hr class="bullet" />
             </form>
-            <a href="daftar.php" class="btn btn-regis btn-block ">Daftar Akun Baru</a>
+            <a href="daftar.php" class="btn btn-regis btn-block ">Daftar Akun Baru untuk Admin</a>
         </div>
     </div>
 </div>
