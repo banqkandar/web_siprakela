@@ -17,7 +17,6 @@ if (isset($_SESSION['username'])) {
                 <p class="sub">Sebuah tempat penelitian di bidang operasional - mengembangkan kualitas baru - mencari
                     pengalaman kerja dilapangan</p>
                 <a href="ajukan.php" class="btn btn-minat d-flex">Tertarik</a>
-                <!-- <button class="btn btn-berita" type="submit"><i class="fa fa-newspaper-o"></i> BERITA</button> -->
             </div>
             <div class="col-md-5">
                 <img class="gambar" src="img/email.svg" style="width:30em;">
