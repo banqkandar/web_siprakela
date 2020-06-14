@@ -3,7 +3,6 @@
 <div class="container-fluid">
   <div class="d-sm-flex align-items-center justify-content-between mb-3">
     <h1 class="h4 mt-5 text-gray-800">Jadwal</h1>
-    <a href="jadwal.php" class="mt-5 d-none d-sm-inline-block btn btn-md btn-light">Kembali</a>
   </div>
   <div class="row">
 

@@ -24,8 +24,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Hari, Tanggal</th>
-                                    <th>Jam Masuk</th>
-                                    <th>Status</th>
+                                    <th>Jam Absen Masuk</th>
+                                    <th>Status Masuk</th>
+                                    <th>Tanggal Dikonfirmasi Oleh Admin</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +40,7 @@
                                     <td> <?= $no++; ?>.</td>
                                     <td>
                                         <?php
-                                        $date = date_create($isi['tanggal']);
+                                        $date = date_create($isi['tanggal_absen']);
                                         echo date_format($date, "l, d F Y");?>
                                     </td>
                                     <td>
@@ -47,7 +48,19 @@
                                         $date = date_create($isi['jam_masuk']);
                                         echo date_format($date, "H:i");?>
                                     </td>
-                                    <td> <?= $isi["status_masuk"]; ?></td>
+                                    <td> <?= ucwords($isi["status_masuk"]); ?></td>
+                                    <td>
+                                    <?php
+                                    if ($isi['status_masuk'] == 'menunggu konfirmasi') {  ?>
+                                            Masih belum dikonfirmasi
+                                        <?php
+                                        } else {   
+                                        ?>
+                                            <?= $isi["tanggal_acc"]; ?>
+                                        <?php
+                                        } 
+                                        ?>
+                                    </td>
                                 </tr>
                                 <?php
                                 }

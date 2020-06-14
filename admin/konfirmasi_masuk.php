@@ -12,13 +12,23 @@ if (!(isset($_SESSION['admin']))) {
   //mengecek apakah di url ada GET id
   if (isset($_GET["id"])) {
     // menyimpan variabel id dari url ke dalam variabel $id
-    $id = $_GET["id"];
-
-    $ubah =$con->query("UPDATE absen SET status_masuk = 'Sudah Absen Masuk' WHERE id_absen = $id");  
+    $id           = $_GET["id"];
+    // $tanggal_acc  = today();
+    $ubah         = $con->query("UPDATE absen SET status_masuk = 'telah absen', tanggal_acc = now() WHERE id_absen = '$id'");  
     if($ubah){
-        echo 'window.alert("Berhasil telah mengkonfirmasi absen masuk.");';
+      echo '
+      <script>
+          window.alert("Berhasil telah mengkonfirmasi absen masuk.");
+          window.location = "absen.php";
+      </script>
+      ';
     }else{
-        echo 'window.alert("Gagal.");';
+      echo '
+      <script>
+          window.alert("Gagal");
+          window.location = "absen.php";
+      </script>
+      ';
     }   
   }
   header("location:absen.php");

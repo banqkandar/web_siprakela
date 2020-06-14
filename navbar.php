@@ -13,7 +13,10 @@
                     <a class="nav-link text-gray-500" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-gray-500" href="profile.php">Profile</a>
+                    <a class="nav-link text-gray-500" href="profile.php">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-gray-500" href="ajukan.php">Ajukan</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link text-gray-100" href="login.php">Login</a>

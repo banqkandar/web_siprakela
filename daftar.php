@@ -4,7 +4,7 @@
     <div class="row align-items-center justify-content-center ">
         <div class="col-lg-3">
             <a href="login.php" class="kembali d-flex">
-                <i class="material-icons mr-2">arrow_back</i>
+                <i class="fas fa-arrow-left mr-2 mt-1"></i>
                 <span>Kembali</span>
             </a>
             <h1 class="h3 font-weight-bold mt-4 pt-1 judul-login">Akun Baru</h1>
@@ -38,7 +38,7 @@
                 <label class="sr-only" for="nama">Nama Lengkap</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="tiny material-icons">person</i></div>
+                        <div class="input-group-text"><i class="fas fa-user"></i></div>
                     </div>
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" autofocus
                         required>
@@ -47,7 +47,7 @@
                 <label class="sr-only" for="username">Username</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="tiny material-icons">album</i></div>
+                        <div class="input-group-text"><i class="fas fa-user"></i></div>
                     </div>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                 </div>
@@ -55,7 +55,7 @@
                 <label class="sr-only" for="password">Password</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="tiny material-icons">lock</i></div>
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
                     </div>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password"
                         required>
